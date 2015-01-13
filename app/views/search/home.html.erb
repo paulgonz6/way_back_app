@@ -1,0 +1,50 @@
+<div class="containter">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <h1>Please enter web address</h1>
+      <%= form_tag("/home", method: "get") do %>
+        <div class="form-group">
+          <%= label_tag(:address, "www.") %>
+          <%= text_field_tag(:address) %>
+          <br>
+          <%= label_tag(:count, "Max results") %>
+          <%= text_field_tag(:count) %>
+          <br>
+          <%= label_tag(:from, "Starting from:") %>
+          <%= text_field_tag(:from) %>
+          <br>
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
+<hr/>
+
+<div class="containter">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 well">
+      <h2><small>Showing results for:</small> www.<%= @address %></h2>
+      <hr/>
+      <table class="table">
+        <thead>
+          <th>Date</th>
+          <th>Link</th>
+          <th>Heading (H1)</th>
+          <th>Subheadings (H2)</th>
+        </thead>
+        <% @links.each do |link| %>
+          <tr>
+            <td><%= link["date"] %></td>
+            <td><a href="<%= link["link"] %>" target="_blank">View landing page</a></td>
+            <td><%= link["h1"] %></td>
+            <td><%= link["h2"] %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
