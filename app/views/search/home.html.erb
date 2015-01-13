@@ -26,24 +26,28 @@
 <div class="containter">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 well">
-      <h2><small>Showing results for:</small> www.<%= @address %></h2>
-      <hr/>
-      <table class="table">
-        <thead>
-          <th>Date</th>
-          <th>Link</th>
-          <th>Heading (H1)</th>
-          <th>Subheadings (H2)</th>
-        </thead>
-        <% @links.each do |link| %>
-          <tr>
-            <td><%= link["date"] %></td>
-            <td><a href="<%= link["link"] %>" target="_blank">View landing page</a></td>
-            <td><%= link["h1"] %></td>
-            <td><%= link["h2"] %></td>
-          </tr>
-        <% end %>
-      </table>
+      <% if @links.nil? %>
+        <h2>Do first search</h2>
+      <% else %>
+        <h2><small>Showing results for:</small> www.<%= @address %></h2>
+        <hr/>
+        <table class="table">
+          <thead>
+            <th>Date</th>
+            <th>Link</th>
+            <th>Heading (H1)</th>
+            <th>Subheadings (H2)</th>
+          </thead>
+          <% @links.each do |link| %>
+            <tr>
+              <td><%= link["date"] %></td>
+              <td><a href="<%= link["link"] %>" target="_blank">View landing page</a></td>
+              <td><%= link["h1"] %></td>
+              <td><%= link["h2"] %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
